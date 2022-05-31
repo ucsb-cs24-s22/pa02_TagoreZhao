@@ -1,7 +1,8 @@
 // Spring'22
 // Instructor: Diba Mirza
 // Student name: Tagore Zhao 
-
+#ifndef MOVIES_H
+#define MOVIES_H
 #include <iostream>
 #include <string>
 using namespace std;
@@ -35,4 +36,4 @@ class Movies {
 
 };
 
-
+#endif

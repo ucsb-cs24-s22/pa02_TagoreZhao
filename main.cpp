@@ -42,14 +42,12 @@ int main(int argc, char** argv){
         // to construct your Movie objects
         // cout << movieName << " has rating " << movieRating << endl;
         // insert elements into your data structure
-        cout << movieName << " has rating " << movieRating << endl;
         Movies m1 = Movies(movieName,movieRating);
         m.insert(m1);
 
   }
 
   movieFile.close();
-  cout <<"Now Print iterate through the set"<<endl<< endl;
   if (argc == 2){
         //print all the movies in ascending alphabetical order of movie names
         for (auto item : m){
@@ -59,6 +57,15 @@ int main(int argc, char** argv){
         return 0;
   }
 
+
+
+    string pf;
+    set<string> prefix;
+    while(getline(cin,pf)){
+        cout << pf << endl;
+        prefix.insert(pf);
+    }
+/*
   //  For each prefix,
   //  Find all movies that have that prefix and store them in an appropriate data structure
   //  If no movie with that prefix exists print the following message
@@ -70,8 +77,9 @@ int main(int argc, char** argv){
 
   return 0;
 }
-
+/*
 /* Add your run time analysis for part 3 of the assignment here as commented block*/
+
 
 bool parseLine(string &line, string &movieName, double &movieRating) {
     if (line.length() <= 0) return false;

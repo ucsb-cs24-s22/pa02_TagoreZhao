@@ -1,5 +1,16 @@
 #include "movies.cpp"
-
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <ctime>
+#include <vector>
+#include <cstring>
+#include <algorithm>
+#include <limits.h>
+#include <iomanip>
+#include <set>
+#include <queue>
+using namespace std;
 
 int main(){
     Movies m1,m2;
