@@ -13,6 +13,7 @@
 #include <iomanip>
 #include <set>
 #include <queue>
+#include <iterator>
 using namespace std;
 
 bool parseLine(string &line, string &movieName, double &movieRating);
@@ -30,7 +31,7 @@ int main(int argc, char** argv){
         cerr << "Could not open file " << argv[1];
         exit(1);
     }
-  
+//Part 1  
   // Create an object of a STL data-structure to store all the movies
   set<Movies> m;
 
@@ -50,21 +51,97 @@ int main(int argc, char** argv){
   movieFile.close();
   if (argc == 2){
         //print all the movies in ascending alphabetical order of movie names
-        for (auto item : m){
+            for (auto item : m){
             item.printInfo();
             cout << endl;
         }
         return 0;
   }
 
-
-
+//Part 2
+if (argc > 2){
+    for (int i=2; i<argc; i++){
+        string pf = argv[i];
+        set<Movies> preMovies;
+        vector<Movies> bestMovies;
+        cout <<"prefix: "<<p<<endl;
+        for (auto movie: m){
+            string name = movie.getName();
+            Movies c = movie;
+            if(name.substr(0,p.length()) == p){
+                preMovies.insert(c);
+                cout << "insert: "<< c.getName()<<endl;
+            }
+        }
+    }
+}
+/*
+  if (argc > 2){
     string pf;
     set<string> prefix;
+    set<Movies> preMovies;
+    for(int i=2; i<argc; i++){
+        prefix.insert(argv[i]);
+    }
+    
+
+
     while(getline(cin,pf)){
         cout << pf << endl;
         prefix.insert(pf);
     }
+
+    cout << " all movies: "<<endl;
+    for (auto item : m){
+            item.printInfo();
+            cout << endl;
+        }
+    cout <<endl<< "start insersion:"<<endl;
+    for(auto p: prefix){
+        cout <<"prefix: "<<p<<endl;
+        for (auto movie: m){
+            string name = movie.getName();
+            Movies c = movie;
+            if(name.substr(0,p.length()) == p){
+                preMovies.insert(c);
+                cout << "insert: "<< c.getName()<<endl;
+            }
+        }
+    }
+    cout << endl << "print premovies: ";
+    for (auto item : preMovies){
+            item.printInfo();
+            cout << endl;
+        }
+    
+
+
+*/
+/*
+    for (auto p: prefix){
+        for (auto n: name){
+            cout <<"prefix: "<<p<<" ";
+            cout <<"substr: "<< n.substr(0,p.length()) << endl;
+            if (n.substr(0,p.length()) == p){
+            Movies t = Movies(n,0.0);
+            m.find(t);
+            Movies s = *(m.find(t));
+            //preMovies.insert(s);
+            s.printName();
+            //preMovies.insert(*(m.find(Movies(n,0.0))));
+            cout<<"insert an item"<< endl;
+            }
+        }
+    }
+*/
+/*
+    cout << endl;
+    cout <<"Movies with Prefix:"<<endl;
+    for (auto item : preMovies){
+            item.printInfo();
+            cout << endl;
+        }
+    Movies max = *(preMovies.cend());*
 /*
   //  For each prefix,
   //  Find all movies that have that prefix and store them in an appropriate data structure
@@ -76,7 +153,8 @@ int main(int argc, char** argv){
   cout << "Best movie with prefix " << "<replace with prefix>" << " is: " << "replace with movie name" << " with rating " << std::fixed << std::setprecision(1) << "replace with movie rating" << endl;
 */
   return 0;
-}
+  }
+
 
 /* Add your run time analysis for part 3 of the assignment here as commented block*/
 

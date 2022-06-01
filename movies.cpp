@@ -52,7 +52,7 @@ void Movies::printInfo ()const{
     cout << name <<","<<rating;
 }
 bool Movies::operator ==(const Movies& m)const{
-    return (name == m.getName())&&(rating == m.getRating());
+    return (name == m.getName());
 }
 bool Movies::operator >(const Movies& m)const{
     if (name > m.getName()){

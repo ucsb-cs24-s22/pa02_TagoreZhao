@@ -22,14 +22,13 @@ class Movies {
         bool operator <(const Movies& m)const; // first compare name then ratings
         Movies(const Movies& m);
         Movies& operator=(const Movies& m); 
-        //need a copy constructor
+        double getRating ()const;
+        string getName ()const;
 
     private:
         string name;
         double rating;
 
-        double getRating ()const;
-        string getName ()const;
         void changeRating (double r);
         void changeName (string n);
 
