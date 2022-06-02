@@ -100,6 +100,7 @@ if (argc > 2){
         if(bestMovies.empty()){
         return 0;
     }
+    
         M b;
         b.equal( bestMovies.front());
         string a = prefix.front();        
