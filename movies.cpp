@@ -49,7 +49,7 @@ void Movies::printName ()const{
     cout << name;
 }
 void Movies::printInfo ()const{
-    cout << name <<","<<rating;
+    cout << name <<", "<<rating;
 }
 bool Movies::operator ==(const Movies& m)const{
     return (name == m.getName());
@@ -123,5 +123,5 @@ void M::printName ()const{
     cout << name;
 }
 void M::printInfo ()const{
-    cout << name <<","<<rating;
+    cout << name <<", "<<rating;
 }
