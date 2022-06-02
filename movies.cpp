@@ -70,7 +70,7 @@ bool Movies::operator <(const Movies& m)const{
         return true;
     }
     if (name == m.getName()){
-        if (rating < m.getRating()){
+        if (rating <= m.getRating()){
             return true;
         }
     }
@@ -114,16 +114,10 @@ bool M::operator ==(const M& m)const{
     return (name == m.getName());
 }
 bool M::operator >(const M& m) const{
-    if(name == m.getName()){
-        return false;
-    }
     return (rating<m.getRating());
 }
 bool M::operator <(const M& m) const{
-    if(name == m.getName()){
-        return true;
-    }
-    return (rating>m.getRating());
+    return (rating>=m.getRating());
 }
 void M::printRating ()const{
     cout << rating;
