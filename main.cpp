@@ -80,6 +80,7 @@ if (argc > 2){
                 preMovies.insert(r);
 //                cout << "insert: "<< c.getName()<<endl;
             }
+            
         }
 //        cout << endl << "print premovies: "<<endl;
         if(preMovies.empty()){
