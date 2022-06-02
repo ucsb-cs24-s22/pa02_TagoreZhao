@@ -35,7 +35,6 @@ int main(int argc, char** argv){
 //Part 1  
   // Create an object of a STL data-structure to store all the movies
   set<Movies> m;
-
   string line, movieName;
   double movieRating;
   // Read each file and store the name and rating
@@ -100,7 +99,6 @@ if (argc > 2){
         if(bestMovies.empty()){
         return 0;
     }
-    
         M b;
         b.equal( bestMovies.front());
         string a = prefix.front();        

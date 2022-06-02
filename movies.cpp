@@ -114,10 +114,16 @@ bool M::operator ==(const M& m)const{
     return (name == m.getName());
 }
 bool M::operator >(const M& m) const{
+    if (rating == m.getRating()){
+        return (name > m.getName());
+    }
     return (rating<m.getRating());
 }
 bool M::operator <(const M& m) const{
-    return (rating>=m.getRating());
+    if (rating == m.getRating()){
+        return (name < m.getName());
+    }
+    return (rating>m.getRating());
 }
 void M::printRating ()const{
     cout << rating;
