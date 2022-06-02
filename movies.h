@@ -35,4 +35,24 @@ class Movies {
 
 };
 
+class M{
+    public:
+    M();
+    M(string n ,double r);
+    void printRating ()const;
+    void printName ()const;
+    void printInfo ()const;
+    M& equal (const Movies& m);
+    M& equal(const M& m);
+    bool operator >(const M& m) const;
+    bool operator <(const M& m) const;
+    double getRating ()const;
+    string getName ()const;
+    private:
+    string name;
+    double rating;
+    void changeRating (double r);
+    void changeName (string n);
+};
+
 #endif

@@ -16,6 +16,7 @@
 #include <iterator>
 using namespace std;
 
+
 bool parseLine(string &line, string &movieName, double &movieRating);
 
 int main(int argc, char** argv){
@@ -60,21 +61,52 @@ int main(int argc, char** argv){
 
 //Part 2
 if (argc > 2){
+    int numBest;
+    queue<M> bestMovies;
+    queue<string> prefix;
+    for(int i=2; i<argc; i++){
+        prefix.push(argv[i]);
+    }
     for (int i=2; i<argc; i++){
+        set<M> preMovies;
         string pf = argv[i];
-        set<Movies> preMovies;
-        vector<Movies> bestMovies;
-        cout <<"prefix: "<<p<<endl;
+//        cout <<"prefix: "<<pf<<endl;
         for (auto movie: m){
             string name = movie.getName();
             Movies c = movie;
-            if(name.substr(0,p.length()) == p){
-                preMovies.insert(c);
-                cout << "insert: "<< c.getName()<<endl;
+            if(name.substr(0,pf.length()) == pf){
+                M r;
+                r.equal(c);
+                preMovies.insert(r);
+//                cout << "insert: "<< c.getName()<<endl;
             }
         }
+//        cout << endl << "print premovies: "<<endl;
+        if(preMovies.empty()){
+            cout << "No movies found with prefix "<<pf << endl << endl;
+        }else{
+            for (auto item : preMovies){
+                item.printInfo();
+                cout << endl;
+            }
+            cout<<endl;
+            M o;
+            o.equal(*(preMovies.begin()));
+            bestMovies.push(o);
+        }
     }
-}
+    for (int i = 0; i<numBest; i++){
+        if(bestMovies.empty()){
+        return 0;
+    }
+        M b;
+        b.equal( bestMovies.front());
+        string a = prefix.front();        
+        bestMovies.pop();
+        prefix.pop();
+        cout << "Best movie with prefix " << "a" << " is: " << b.getName() << " with rating " << std::fixed << std::setprecision(1) << b.getRating() << endl;
+    }
+
 /*
   if (argc > 2){
     string pf;
@@ -158,7 +190,7 @@ if (argc > 2){
 
 /* Add your run time analysis for part 3 of the assignment here as commented block*/
 
-
+}
 bool parseLine(string &line, string &movieName, double &movieRating) {
     if (line.length() <= 0) return false;
     string tempRating = "";

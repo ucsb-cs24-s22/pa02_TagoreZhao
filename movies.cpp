@@ -76,3 +76,52 @@ bool Movies::operator <(const Movies& m)const{
     }
     return false;
 }
+
+
+
+
+M::M(){
+    name = "N";
+    rating = 0.0;
+}
+M::M(string n ,double r){
+    changeName(n);
+    changeRating(r);
+}
+void M::changeRating (double r){
+    rating = r;
+}
+void M::changeName (string n){
+    name = n;
+}
+double M::getRating ()const{
+    return rating;
+}
+string M::getName ()const{
+    return name;
+}
+M& M::equal (const Movies& m){
+    changeName(m.getName());
+    changeRating(m.getRating());
+    return *this;
+}
+M& M::equal (const M& m) {
+    changeName(m.getName());
+    changeRating(m.getRating());
+    return *this;
+}
+bool M::operator >(const M& m) const{
+    return (rating<m.getRating());
+}
+bool M::operator <(const M& m) const{
+    return (rating>m.getRating());
+}
+void M::printRating ()const{
+    cout << rating;
+}
+void M::printName ()const{
+    cout << name;
+}
+void M::printInfo ()const{
+    cout << name <<","<<rating;
+}
