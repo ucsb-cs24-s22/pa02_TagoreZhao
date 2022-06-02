@@ -110,6 +110,9 @@ M& M::equal (const M& m) {
     changeRating(m.getRating());
     return *this;
 }
+bool M::operator ==(const M& m)const{
+    return (name == m.getName());
+}
 bool M::operator >(const M& m) const{
     return (rating<m.getRating());
 }

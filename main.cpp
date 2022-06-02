@@ -53,7 +53,7 @@ int main(int argc, char** argv){
   if (argc == 2){
         //print all the movies in ascending alphabetical order of movie names
             for (auto item : m){
-            item.printInfo();
+            cout << item.getName() <<", "<< std::fixed << std::setprecision(1) <<item.getRating();
             cout << endl;
         }
         return 0;
@@ -86,7 +86,7 @@ if (argc > 2){
             cout << "No movies found with prefix "<<pf << endl << endl;
         }else{
             for (auto item : preMovies){
-                item.printInfo();
+                cout << item.getName() <<", "<< std::fixed << std::setprecision(1) <<item.getRating();
                 cout << endl;
             }
             cout<<endl;
@@ -107,73 +107,7 @@ if (argc > 2){
         cout << "Best movie with prefix " << a << " is: " << b.getName() << " with rating " << std::fixed << std::setprecision(1) << b.getRating() << endl;
     }
 
-/*
-  if (argc > 2){
-    string pf;
-    set<string> prefix;
-    set<Movies> preMovies;
-    for(int i=2; i<argc; i++){
-        prefix.insert(argv[i]);
-    }
-    
 
-
-    while(getline(cin,pf)){
-        cout << pf << endl;
-        prefix.insert(pf);
-    }
-
-    cout << " all movies: "<<endl;
-    for (auto item : m){
-            item.printInfo();
-            cout << endl;
-        }
-    cout <<endl<< "start insersion:"<<endl;
-    for(auto p: prefix){
-        cout <<"prefix: "<<p<<endl;
-        for (auto movie: m){
-            string name = movie.getName();
-            Movies c = movie;
-            if(name.substr(0,p.length()) == p){
-                preMovies.insert(c);
-                cout << "insert: "<< c.getName()<<endl;
-            }
-        }
-    }
-    cout << endl << "print premovies: ";
-    for (auto item : preMovies){
-            item.printInfo();
-            cout << endl;
-        }
-    
-
-
-*/
-/*
-    for (auto p: prefix){
-        for (auto n: name){
-            cout <<"prefix: "<<p<<" ";
-            cout <<"substr: "<< n.substr(0,p.length()) << endl;
-            if (n.substr(0,p.length()) == p){
-            Movies t = Movies(n,0.0);
-            m.find(t);
-            Movies s = *(m.find(t));
-            //preMovies.insert(s);
-            s.printName();
-            //preMovies.insert(*(m.find(Movies(n,0.0))));
-            cout<<"insert an item"<< endl;
-            }
-        }
-    }
-*/
-/*
-    cout << endl;
-    cout <<"Movies with Prefix:"<<endl;
-    for (auto item : preMovies){
-            item.printInfo();
-            cout << endl;
-        }
-    Movies max = *(preMovies.cend());*
 /*
   //  For each prefix,
   //  Find all movies that have that prefix and store them in an appropriate data structure

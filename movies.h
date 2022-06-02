@@ -44,6 +44,7 @@ class M{
     void printInfo ()const;
     M& equal (const Movies& m);
     M& equal(const M& m);
+    bool operator ==(const M& m)const;
     bool operator >(const M& m) const;
     bool operator <(const M& m) const;
     double getRating ()const;
