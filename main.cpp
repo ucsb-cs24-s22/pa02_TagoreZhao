@@ -104,7 +104,7 @@ if (argc > 2){
         string a = prefix.front();        
         bestMovies.pop();
         prefix.pop();
-        cout << "Best movie with prefix " << "a" << " is: " << b.getName() << " with rating " << std::fixed << std::setprecision(1) << b.getRating() << endl;
+        cout << "Best movie with prefix " << a << " is: " << b.getName() << " with rating " << std::fixed << std::setprecision(1) << b.getRating() << endl;
     }
 
 /*
