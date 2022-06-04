@@ -64,12 +64,11 @@ if (argc > 2){
     queue<M> bestMovies;
     queue<string> prefix;
     for(int i=2; i<argc; i++){
-        prefix.push(argv[i]);
-    }
+        prefix.push(argv[i]); //log(m)
+    } // O(m log(m))
     for (int i=2; i<argc; i++){
         set<M> preMovies;
         string pf = argv[i];
-//        cout <<"prefix: "<<pf<<endl;
         for (auto movie: m){
             string name = movie.getName();
             Movies c = movie;
@@ -77,52 +76,65 @@ if (argc > 2){
                 M r;
                 r.equal(c);
                 preMovies.insert(r);
-//                cout << "insert: "<< c.getName()<<endl;
 
             }
-        }
-//        cout << endl << "print premovies: "<<endl;
+        } // O(k log(k))
         if(preMovies.empty()){
             cout << "No movies found with prefix "<<pf << endl << endl;
         }else{
             for (auto item : preMovies){
                 cout << item.getName() <<", "<< std::fixed << std::setprecision(1) <<item.getRating();
                 cout << endl;
-            }
+            }//O(n)
             cout<<endl;
             M o;
             o.equal(*(preMovies.begin()));
             bestMovies.push(o);
         }
-    }
+    } // O(m*k*log(k))
     for (int i = 0; i<numBest; i++){
         if(bestMovies.empty()){
         return 0;
-    }
+        }
         M b;
-        b.equal( bestMovies.front());
+        b.equal( bestMovies.front()); 
         string a = prefix.front();        
-        bestMovies.pop();
-        prefix.pop();
+        bestMovies.pop(); //O(log(k))
+        prefix.pop();//O(log(m))
         cout << "Best movie with prefix " << a << " is: " << b.getName() << " with rating " << std::fixed << std::setprecision(1) << b.getRating() << endl;
-    }
-
-
-/*
-  //  For each prefix,
-  //  Find all movies that have that prefix and store them in an appropriate data structure
-  //  If no movie with that prefix exists print the following message
-  cout << "No movies found with prefix "<<"<replace with prefix>" << endl << endl;
-
-  //  For each prefix,
-  //  Print the highest rated movie with that prefix if it exists.
-  cout << "Best movie with prefix " << "<replace with prefix>" << " is: " << "replace with movie name" << " with rating " << std::fixed << std::setprecision(1) << "replace with movie rating" << endl;
-*/
+    }// T(n) = k*(O(logk)+O(logm))= O(klog(m))
   return 0;
   }
 
 
 /* Add your run time analysis for part 3 of the assignment here as commented block*/
+/* Part 3 Analysis:
+Time Complexity analysis:
+    There are three loops in total.
+        1.The first loop push all prefix into a quene: T1(m,k,n) = O(m*log(m))
+        2.The second loop have two inner loop:
+            a.the first loop iterate through the set and push all the movie with the prefix into a quene: T2.a(m,k,n)=O(k*log(k))
+            b.the second loop iterate through the quene push all the movies with the prefix into a quene: T2.b(m,k,n)=O(n)
+         T2(m,k,n)= m(O(k*log(k))+O(n))=O(m*k*log(k))
+        3. The third loop iterate through the two quene and pop them out: T3(n) = k*(O(logk)+O(logm))= O(klog(m))
+    The total Time complexity T(m,k,n)= O(m*log(m)) + O(m*k*log(k)) + O(klog(m)) = O(m*k*log(k))
+
+Space Complexisy analysis:
+    Besides the given movie set and prefix quene, I need a quene that can contain all the movie with the prefix
+    S(m,k,n) = O(k)
+
+I tried to design my program for both:
+    I was not able to achieve both of them.
+    The main reason I think is that I am not fully confortable with all the properties and functions of different data type,
+    Therefore when I am desigining my program I can not find the best option to approach the question. The original design 
+    actually set a top boundary for the effieceny and complexity for my program. Simplyfying lines of code will not make too
+    much difference, the design part before start writing my code is the key to a lower time and space complexity from my point
+    of view.If the design is bad, there is not much I can do besides redesign it.
+    Time complexity is harder to achieve in my opinion, because it closely corresponds to how I approach the question. If I want
+    to reduce time complexity I would have to find another approach sometime even changing the space complexity. If I do not want
+    the trade off, I would have to find another approach under limitations of space.  
+
+*/
 
 }
 bool parseLine(string &line, string &movieName, double &movieRating) {
